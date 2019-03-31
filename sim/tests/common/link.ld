@@ -26,7 +26,7 @@ SECTIONS {
     SIM_STOP = .;
     LONG(0x6F);
     LONG(-1);
-    . = 0x100;
+    . = 0xF00; /* Задаётся смещение счётчика позиций. В трейслоге метка _start начинает с 1000*/
     PROVIDE(__TEXT_START__ = .);
     *(.text.init) 
   } >RAM
