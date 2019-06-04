@@ -446,6 +446,15 @@ always_comb begin
                         endcase // funct3
                     end // SCR1_OPCODE_SYSTEM
 
+                    SCR1_OPCODE_CUSTOM_FUNC          : begin
+                        idu2exu_use_rs1         = 1'b1;
+                        idu2exu_use_rs2         = 1'b1;
+                        idu2exu_use_rd          = 1'b1;
+                        idu2exu_cmd.ialu_op     = SCR1_IALU_OP_REG_REG;
+                        idu2exu_cmd.ialu_cmd    = SCR1_IALU_CMD_SGNJ;
+                        idu2exu_cmd.rd_wb_sel   = SCR1_RD_WB_IALU;
+                    end // SCR1_OPCODE_CUSTOM_FUNC
+
                     default : begin
                         rvi_illegal = 1'b1;
                     end

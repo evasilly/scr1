@@ -462,6 +462,9 @@ always_comb begin
             shft_cmd    = {(ialu_cmd != SCR1_IALU_CMD_SLL), (ialu_cmd == SCR1_IALU_CMD_SRA)};
             ialu_res    = shft_res;
         end
+        SCR1_IALU_CMD_SGNJ : begin
+            ialu_res    = (ialu_op1[31] == ialu_op2[31]) ? ialu_op1 : (~(ialu_op1)+1);
+        end
 `ifdef SCR1_RVM_EXT
         SCR1_IALU_CMD_MUL,
         SCR1_IALU_CMD_MULHU,
